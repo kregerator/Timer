@@ -6,7 +6,7 @@
 # object oriented or otherwise, so there may be better ways to
 # do these things. For now, I'm using it at a learning exercise.
 
-from datetime import datetime
+import datetime
 
 class Timer:
 # The Timer class holds the three vairables needed for the timer 
@@ -93,6 +93,8 @@ class Timer:
 		elif self.status == 1: #currently running
 			print "Current elapsed time is : %s" % str(datetime.datetime.now() - 
 				self.start_time)
+			if self.elapsed_time != 0:
+				print "Stored Elapsed time is : %s" % str(self.elapsed_time)
 		elif self.status == 2: 
 			print "Not running. Current elapsed time is %s" % str(self.elapsed_time)
 		else:
@@ -116,6 +118,9 @@ while var == 1:
 	elif com == 'r':
 		my_timer.refresh_timer()
 	elif com == 'q':
+		# if currently running, call stop_timer
+		if my_timer.status == 1:
+			my_timer.stop_timer()
 		print "Quitting . . . "
 		var = 0
 	elif com == 'd':
